@@ -1,33 +1,38 @@
-function calculateProfit() {
-    // Get input values
-    const importPriceA = parseFloat(document.getElementById('importPriceA').value);
-    const profitMarginA = parseFloat(document.getElementById('profitMarginA').value) / 100;
-    const importPriceB = parseFloat(document.getElementById('importPriceB').value);
-    const profitMarginB = parseFloat(document.getElementById('profitMarginB').value) / 100;
-    const importPriceC = parseFloat(document.getElementById('importPriceC').value);
-    const profitMarginC = parseFloat(document.getElementById('profitMarginC').value) / 100;
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
 
-    // Calculate sale prices and final profits
-    const salePriceA = importPriceA * (1 + profitMarginA);
-    const finalProfitA = salePriceA - importPriceA;
+h1 {
+    text-align: center;
+}
 
-    const salePriceB = importPriceB * (1 + profitMarginB);
-    const finalProfitB = salePriceB - importPriceB;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-    const salePriceC = importPriceC * (1 + profitMarginC);
-    const finalProfitC = salePriceC - importPriceC;
+table, th, td {
+    border: 1px solid black;
+}
 
-    // Update the table with calculated values
-    document.getElementById('salePriceA').innerText = salePriceA.toFixed(2);
-    document.getElementById('finalProfitA').innerText = finalProfitA.toFixed(2);
-    
-    document.getElementById('salePriceB').innerText = salePriceB.toFixed(2);
-    document.getElementById('finalProfitB').innerText = finalProfitB.toFixed(2);
-    
-    document.getElementById('salePriceC').innerText = salePriceC.toFixed(2);
-    document.getElementById('finalProfitC').innerText = finalProfitC.toFixed(2);
+th, td {
+    padding: 10px;
+    text-align: center;
+}
 
-    // Calculate and update the total profit
-    const totalProfit = finalProfitA + finalProfitB + finalProfitC;
-    document.getElementById('totalProfit').innerText = totalProfit.toFixed(2);
+input {
+    width: 100px;
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+h2 {
+    text-align: center;
 }

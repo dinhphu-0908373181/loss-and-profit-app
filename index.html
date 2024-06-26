@@ -3,53 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Profit Calculator</title>
+    <title>Profit and Loss Tracker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Product Profit Calculator</h1>
-    <table id="profitTable">
-        <thead>
-            <tr>
-                <th>Product Name</th>
-                <th>Import Price</th>
-                <th>% Profit Margin</th>
-                <th>Sale Price</th>
-                <th>Final Profit</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Product A</td>
-                <td><input type="number" id="importPriceA" value="100"></td>
-                <td><input type="number" id="profitMarginA" value="20"></td>
-                <td id="salePriceA"></td>
-                <td id="finalProfitA"></td>
-            </tr>
-            <tr>
-                <td>Product B</td>
-                <td><input type="number" id="importPriceB" value="150"></td>
-                <td><input type="number" id="profitMarginB" value="25"></td>
-                <td id="salePriceB"></td>
-                <td id="finalProfitB"></td>
-            </tr>
-            <tr>
-                <td>Product C</td>
-                <td><input type="number" id="importPriceC" value="200"></td>
-                <td><input type="number" id="profitMarginC" value="30"></td>
-                <td id="salePriceC"></td>
-                <td id="finalProfitC"></td>
-            </tr>
-            <tr>
-                <td><strong>Total</strong></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td id="totalProfit"></td>
-            </tr>
-        </tbody>
-    </table>
-    <button onclick="calculateProfit()">Calculate</button>
+    <h1>Profit and Loss Tracker</h1>
+    <form id="productForm">
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Import Price</th>
+                    <th>Cost</th>
+                    <th>Tax (%)</th>
+                    <th>% Profit Margin</th>
+                    <th>Sale Price</th>
+                    <th>Final Profit</th>
+                </tr>
+            </thead>
+            <tbody id="productBody">
+                <tr>
+                    <td><input type="text" name="productName"></td>
+                    <td><input type="number" name="importPrice"></td>
+                    <td><input type="number" name="cost"></td>
+                    <td><input type="number" name="tax"></td>
+                    <td><input type="number" name="profitMargin"></td>
+                    <td class="salePrice"></td>
+                    <td class="finalProfit"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="addProduct()">Add Product</button>
+        <button type="button" onclick="calculateProfit()">Calculate</button>
+    </form>
+    <h2>Total Profit: <span id="totalProfit"></span></h2>
     <script src="script.js"></script>
 </body>
 </html>

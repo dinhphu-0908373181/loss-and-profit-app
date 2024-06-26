@@ -1,35 +1,43 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+function addProduct() {
+    const table = document.getElementById('productBody');
+    const row = table.insertRow();
+    
+    const cell1 = row.insertCell(0);
+    const cell2 = row.insertCell(1);
+    const cell3 = row.insertCell(2);
+    const cell4 = row.insertCell(3);
+    const cell5 = row.insertCell(4);
+    const cell6 = row.insertCell(5);
+    const cell7 = row.insertCell(6);
+
+    cell1.innerHTML = '<input type="text" name="productName">';
+    cell2.innerHTML = '<input type="number" name="importPrice">';
+    cell3.innerHTML = '<input type="number" name="cost">';
+    cell4.innerHTML = '<input type="number" name="tax">';
+    cell5.innerHTML = '<input type="number" name="profitMargin">';
+    cell6.className = 'salePrice';
+    cell7.className = 'finalProfit';
 }
 
-h1 {
-    text-align: center;
-}
+function calculateProfit() {
+    const rows = document.querySelectorAll('#productBody tr');
+    let totalProfit = 0;
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
+    rows.forEach(row => {
+        const importPrice = parseFloat(row.querySelector('input[name="importPrice"]').value) || 0;
+        const cost = parseFloat(row.querySelector('input[name="cost"]').value) || 0;
+        const tax = parseFloat(row.querySelector('input[name="tax"]').value) || 0;
+        const profitMargin = parseFloat(row.querySelector('input[name="profitMargin"]').value) || 0;
 
-table, th, td {
-    border: 1px solid black;
-}
+        const taxAmount = (importPrice + cost) * (tax / 100);
+        const salePrice = (importPrice + cost + taxAmount) * (1 + profitMargin / 100);
+        const finalProfit = salePrice - (importPrice + cost + taxAmount);
 
-th, td {
-    padding: 10px;
-    text-align: center;
-}
+        row.querySelector('.salePrice').innerText = salePrice.toFixed(2);
+        row.querySelector('.finalProfit').innerText = finalProfit.toFixed(2);
 
-input {
-    width: 80px;
-    text-align: center;
-}
+        totalProfit += finalProfit;
+    });
 
-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
+    document.getElementById('totalProfit').innerText = totalProfit.toFixed(2);
 }
